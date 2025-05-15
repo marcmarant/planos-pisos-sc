@@ -1,18 +1,8 @@
 <?php
-  require_once 'connection.php';
-
-  //$piso = 1;
-  //$habitaciones = getHabitaciones($piso);
-
-  //Temporal data
-  $habitaciones = [
-    [
-      'mote' => 'Plato',
-      'habitacion' => 21,
-      'superficie' => 14.7,
-      'descripcion' => 'La habitación más diferente del colegio, no tiene vecinos ni por arriba ni por abajo, solo colinda con la habitación 22 en el primero. Cuenta con una ventana que da a la calle (ruido de bares), y una ventana en el baño que da al patio interior (siendo la única habitación del colegio con ventana hacía este patio). La habitación tiende a calentarse, pero estas dos ventanas enfrentadas crean una ventilación perfecta.',
-    ],
-  ]
+  require_once 'habitaciones_query.php';
+  $conn = include 'connection.php';
+  $piso = 1;
+  $habitaciones = getHabitaciones($conn, $piso);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -162,12 +152,12 @@
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         const value = parseInt(btn.id.replace('hab-', ''), 10);
-        const hab = habitaciones.find(hab => hab.habitacion === value);
-        
+        const hab = habitaciones.find(hab => hab.id === value);
+
         infoContainer.style.display = 'block';
         if(true) {
           infoDiv.innerHTML = `
-            <h2>Habitación: ${hab?.habitacion}</h2>
+            <h2>Habitación: ${hab?.id}</h2>
             <br/>
             <p>Residente actual: ${hab?.mote}</p>
             <p>Superficie: ${hab?.superficie}m²</p>
