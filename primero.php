@@ -8,7 +8,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Plano del primer piso</title>
+  <title>Plano del Primer Piso</title>
   <link rel="stylesheet" href="index.css">
   <style>
     #hab-21 {
@@ -95,7 +95,7 @@
 </head>
 <body>
   <header>
-    <h1>Plano del primer piso</h1>
+    <h1>Plano del Primer Piso</h1>
     <img src="assets/sclogo.png" alt="Logo del colegio" />
     <nav>
       <a href="post.php">Post</a>

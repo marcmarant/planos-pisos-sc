@@ -10,6 +10,6 @@
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
   } catch (PDOException $e) {
-    die("Conexión fallida: " . $e->getMessage());
+    die("Error al intentar conectarse a la base de datos.");
   }
 ?>
