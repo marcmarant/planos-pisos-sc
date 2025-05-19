@@ -13,7 +13,7 @@
       WHERE H.piso = :piso AND C.habitacion IS NOT NULL
     ";
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':piso', 1, PDO::PARAM_INT);
+    $stmt->bindValue(':piso', $piso, PDO::PARAM_INT);
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
