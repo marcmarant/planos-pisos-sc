@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
   <title>Plano de Post</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="post.css">
   <style>
     #hab-1 {
       top: 68.5%;
@@ -95,8 +96,10 @@
 </head>
 <body>
   <header>
-    <h1>Plano de Post</h1>
-    <img src="assets/sclogo.png" alt="Logo del colegio" />
+    <div class="title">
+      <h1>Plano de Post</h1>
+      <img src="assets/sclogo.png" alt="Logo del colegio" />
+    </div>
     <nav>
       <a class="current">Post</a>
       <a href="primero.php">Primer Piso</a>
@@ -145,7 +148,7 @@
   <script>
     window.habitaciones = <?= json_encode($habitaciones) ?>;
   </script>
-  <script src="index.js"></script>
+  <script src="habitacionDetails.js"></script>
   <script src="mobileWarning.js"></script>
 </body>
 </html>

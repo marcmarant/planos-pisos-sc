@@ -1,5 +1,5 @@
 <?php
-  function getHabitaciones($conn, $piso) {
+  function getHabitaciones($conn, $piso=null) {
     $sql = "
       WITH colegiales_actuales AS (
         SELECT mote, habitacion
@@ -10,10 +10,15 @@
       )
       SELECT C.mote, H.*
       FROM colegiales_actuales C INNER JOIN habitacion H ON C.habitacion = H.id
-      WHERE H.piso = :piso AND C.habitacion IS NOT NULL
+      WHERE C.habitacion IS NOT NULL
     ";
+    if ($piso !== null) {
+      $sql .= " AND H.piso = :piso";
+    }
     $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':piso', $piso, PDO::PARAM_INT);
+    if ($piso !== null) {
+      $stmt->bindValue(':piso', $piso, PDO::PARAM_INT);
+    }
     $stmt->execute();
 
     $habitaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);

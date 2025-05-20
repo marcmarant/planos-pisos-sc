@@ -10,6 +10,7 @@
   <meta charset="UTF-8">
   <title>Plano del Segundo Piso</title>
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="piso.css">
   <style>
     #hab-41 {
       top: 68.5%;
@@ -125,7 +126,7 @@
   <script>
     window.habitaciones = <?= json_encode($habitaciones) ?>;
   </script>
-  <script src="index.js"></script>
+  <script src="habitacionDetails.js"></script>
   <script src="mobileWarning.js"></script>
 </body>
 </html>

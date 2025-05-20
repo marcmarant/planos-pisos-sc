@@ -22,19 +22,15 @@ main {
   position: relative;
 }
 
-main img {
-  width: 100%;
-  height: 100%;
-}
-
 header {
   margin-top: 30px;
   position: relative;
   width: 100%;
   padding: 30px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 header img {
@@ -44,6 +40,13 @@ header img {
   width: 95px;
   height: 90px;
   z-index: 500;
+}
+
+.image {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 nav {
@@ -75,26 +78,6 @@ nav .current {
 }
 nav .current:hover {
   background-color: #aaa;
-}
-
-.hab-selector {
-  width: 33px;
-  height: 33px;
-  padding: 5px 6px;
-  position: absolute;
-  top: 0;
-  border-radius: 50%;
-  background-color: #bc142e;
-  color: #fff;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-align: center;
-  cursor: pointer;
-  transition: padding 0.1s ease;
-}
-.hab-selector:hover {
-  font-size: 1.4em;
-  padding: 4px 4px;
 }
 
 .info-container {
@@ -159,22 +142,12 @@ nav .current:hover {
   margin-top: 5px;
 }
 
-#rotate-warning {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80vw;
-  height: 40vh;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: #000 2px 2px 15px;
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  text-align: center;
-  padding: 30px;
-  z-index: 1000;
-  font-size: 2.5em;
+@media (max-width: 1000px) {
+  nav {
+    position: static;
+    width: 80%;
+    flex-direction: row;
+    margin-top: 40px;
+    text-align: center; 
+  }
 }
