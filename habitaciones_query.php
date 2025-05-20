@@ -20,7 +20,7 @@
 
     foreach ($habitaciones as &$habitacion) {
       $histSql = "
-        SELECT mote, cursoid
+        SELECT mote, cursoid as curso
         FROM colegial_curso INNER JOIN colegial ON colegial_curso.colegialid = colegial.id
         WHERE habitacion = :habitacion_id
         ORDER BY cursoid DESC
