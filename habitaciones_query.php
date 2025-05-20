@@ -16,7 +16,7 @@
     $stmt->bindValue(':piso', $piso, PDO::PARAM_INT);
     $stmt->execute();
 
-    $habitaciones->fetchAll(PDO::FETCH_ASSOC);
+    $habitaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($habitaciones as &$habitacion) {
       $histSql = "
@@ -25,7 +25,7 @@
         WHERE habitacion = :habitacion_id
         ORDER BY cursoid DESC
       ";
-      $histStmt = $conn->prepare($historicoSql);
+      $histStmt = $conn->prepare($histSql);
       $histStmt->bindValue(':habitacion_id', $habitacion['id'], PDO::PARAM_INT);
       $histStmt->execute();
       $habitacion['historial'] = $histStmt->fetchAll(PDO::FETCH_COLUMN);
