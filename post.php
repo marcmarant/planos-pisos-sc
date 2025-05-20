@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <title>Plano de Post</title>
   <link rel="stylesheet" href="index.css">
-  <link rel="stylesheet" href="post.css">
+  <link rel="stylesheet" href="piso.css">
   <style>
     #hab-1 {
       top: 68.5%;
@@ -101,6 +101,7 @@
       <img src="assets/sclogo.png" alt="Logo del colegio" />
     </div>
     <nav>
+      <a href="index.php">Inicio</a>
       <a class="current">Post</a>
       <a href="primero.php">Primer Piso</a>
       <a href="segundo.php">Segundo Piso</a>

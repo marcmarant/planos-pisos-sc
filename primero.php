@@ -99,6 +99,7 @@
     <h1>Plano del Primer Piso</h1>
     <img src="assets/sclogo.png" alt="Logo del colegio" />
     <nav>
+      <a href="index.php">Inicio</a>
       <a href="post.php">Post</a>
       <a class="current">Primer Piso</a>
       <a href="segundo.php">Segundo Piso</a>

@@ -1,7 +1,19 @@
 <?php
   require_once 'habitaciones_query.php';
-  $conn = include 'connection.php';
-  $habitaciones = getHabitaciones($conn);
+  //$conn = include 'connection.php';
+  //$habitaciones = getHabitaciones($conn);
+  $habitaciones = [
+    ['id' => 1, 'piso' => 1, 'superficie' => 20, 'mote' => 'Sala de Profesores'],
+    ['id' => 2, 'piso' => 1, 'superficie' => 15, 'mote' => 'Sala de Computación'],
+    ['id' => 3, 'piso' => 1, 'superficie' => 25, 'mote' => 'Sala de Música'],
+    ['id' => 4, 'piso' => 1, 'superficie' => 30, 'mote' => 'Sala de Arte'],
+    ['id' => 5, 'piso' => 1, 'superficie' => 18, 'mote' => 'Sala de Ciencias'],
+    ['id' => 6, 'piso' => 1, 'superficie' => 22, 'mote' => 'Sala de Idiomas'],
+    ['id' => 7, 'piso' => 1, 'superficie' => 28, 'mote' => 'Sala de Historia'],
+    ['id' => 8, 'piso' => 1, 'superficie' => 24, 'mote' => 'Sala de Geografía'],
+    ['id' => 9, 'piso' => 1, 'superficie' => 26, 'mote' => 'Sala de Matemáticas'],
+    ['id' => 10, 'piso' => 1, 'superficie' => 21, 'mote' => 'Sala de Lengua']
+  ]
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -59,6 +71,7 @@
     <h1>Planos del Mayor de Santa Cruz</h1>
     <img src="assets/sclogo.png" alt="Logo del colegio" />
     <nav>
+      <a class="current">Inicio</a>
       <a href="post.php">Post</a>
       <a href="primero.php">Primer Piso</a>
       <a href="segundo.php">Segundo Piso</a>
@@ -89,7 +102,11 @@
       </div>
       <table>
         <tbody>
-          <?php foreach ($habitaciones as $habitacion): ?>
+          <?php 
+          usort($habitaciones, function($a, $b) {
+            return $a['id'] <=> $b['id'];
+          });
+          foreach ($habitaciones as $habitacion): ?>
             <tr id="hab-<?= $habitacion['id'] ?>" class="hab-selector">
               <td><?= $habitacion['id'] ?></td>
               <td><?= $habitacion['piso'] ?>º</td>

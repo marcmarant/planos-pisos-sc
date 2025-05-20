@@ -83,6 +83,7 @@
     <h1>Plano del Segundo Piso</h1>
     <img src="assets/sclogo.png" alt="Logo del colegio" />
     <nav>
+      <a href="index.php">Inicio</a>
       <a href="post.php">Post</a>
       <a href="primero.php">Primer Piso</a>
       <a class="current">Segundo Piso</a>
