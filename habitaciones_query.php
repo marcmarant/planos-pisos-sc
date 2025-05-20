@@ -20,7 +20,7 @@
 
     foreach ($habitaciones as &$habitacion) {
       $histSql = "
-        SELECT colegialid, mote, cursoid
+        SELECT mote, cursoid
         FROM colegial_curso INNER JOIN colegial ON colegial_curso.colegialid = colegial.id
         WHERE habitacion = :habitacion_id
         ORDER BY cursoid DESC
@@ -28,7 +28,7 @@
       $histStmt = $conn->prepare($histSql);
       $histStmt->bindValue(':habitacion_id', $habitacion['id'], PDO::PARAM_INT);
       $histStmt->execute();
-      $habitacion['historial'] = $histStmt->fetchAll(PDO::FETCH_COLUMN);
+      $habitacion['historial'] = $histStmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     return $habitaciones;
