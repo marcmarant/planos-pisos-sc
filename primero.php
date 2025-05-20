@@ -1,8 +1,43 @@
 <?php
   require_once 'habitaciones_query.php';
-  $conn = include 'connection.php';
+  //$conn = include 'connection.php';
   $piso = 1;
-  $habitaciones = getHabitaciones($conn, $piso);
+  //$habitaciones = getHabitaciones($conn, $piso);
+  $habitaciones = [
+    [
+      'id' => 21,
+      'mote' => 'Plato',
+      'superficie' => 30.94,
+      'descripcion' => 'blablabla pues si esta muy bien que si pero wesot mnos jwo uwb  dmfrh ,j fes irhf ufjsd uf s fusbv urbeub fbfbd dfjbr  vusbrjgbf ugrbsdi gf uidbjgf ufdgbjf djfbgodjba fdnod jdfos ofdnjd non ndi ns jdsnfosdknsk nsonfs disnfsd bdid fdosnfd sondf sdofnd fbsdof dsonf',
+      'historial' => [
+        [
+          'mote' => 'Anafrank',
+          'curso' => '2022-2023',
+        ],
+        [
+          'mote' => 'Jimmy',
+          'curso' => '2020-2021',
+        ],
+      ]
+    ],
+    [
+      'id' => 22,
+      'mote' => 'Cazorla',
+      'superficie' => 8.94,
+      'descripcion' => 'bldsfdfdaa',
+      'historial' => [
+        [
+          'mote' => 'Candace',
+          'curso' => '2022-2023',
+        ],
+        [
+          'mote' => 'Aceituno',
+          'curso' => '2020-2021',
+        ],
+      ]
+    ],
+    // ... (más habitaciones)
+  ]
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -143,36 +178,9 @@
     <div class="hab-selector" id="hab-40">40</div>
   </main>
   <script>
-    const habitaciones = <?= json_encode($habitaciones) ?>;
-    const buttons = document.querySelectorAll('.hab-selector');
-    const infoContainer = document.querySelector('.info-container');
-    const closeInfo = document.querySelector('.info-container svg');
-    const infoDiv = document.querySelector('.info');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const value = parseInt(btn.id.replace('hab-', ''), 10);
-        const hab = habitaciones.find(hab => hab.id === value);
-
-        infoContainer.style.display = 'block';
-        if(true) {
-          infoDiv.innerHTML = `
-            <h2>Habitación: ${hab?.id}</h2>
-            <br/>
-            <p>Residente actual: ${hab?.mote}</p>
-            <p>Superficie: ${hab?.superficie}m²</p>
-            <p>Descripción: ${hab?.descripcion}</p>
-          `;
-        } else {
-          infoDiv.innerHTML = '<p>Usuario no encontrado.</p>';
-        }
-      });
-    });
-
-    closeInfo.addEventListener('click', () => {
-      infoContainer.style.display = 'none';
-    });
+    window.habitaciones = <?= json_encode($habitaciones) ?>;
   </script>
+  <script src="index.js"></script>
   <script src="mobileWarning.js"></script>
 </body>
 </html>

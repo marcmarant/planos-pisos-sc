@@ -16,6 +16,21 @@
     $stmt->bindValue(':piso', $piso, PDO::PARAM_INT);
     $stmt->execute();
 
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $habitaciones->fetchAll(PDO::FETCH_ASSOC);
+
+    foreach ($habitaciones as &$habitacion) {
+      $histSql = "
+        SELECT colegialid, mote, cursoid
+        FROM colegial_curso INNER JOIN colegial ON colegial_curso.colegialid = colegial.id
+        WHERE habitacion = :habitacion_id
+        ORDER BY cursoid DESC
+      ";
+      $histStmt = $conn->prepare($historicoSql);
+      $histStmt->bindValue(':habitacion_id', $habitacion['id'], PDO::PARAM_INT);
+      $histStmt->execute();
+      $habitacion['historial'] = $histStmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
+    return $habitaciones;
   }
 ?>

@@ -143,36 +143,9 @@
     <div class="hab-selector" id="hab-20">20</div>
   </main>
   <script>
-    const habitaciones = <?= json_encode($habitaciones) ?>;
-    const buttons = document.querySelectorAll('.hab-selector');
-    const infoContainer = document.querySelector('.info-container');
-    const closeInfo = document.querySelector('.info-container svg');
-    const infoDiv = document.querySelector('.info');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const value = parseInt(btn.id.replace('hab-', ''), 10);
-        const hab = habitaciones.find(hab => hab.id === value);
-
-        infoContainer.style.display = 'block';
-        if(true) {
-          infoDiv.innerHTML = `
-            <h2>Habitación: ${hab?.id}</h2>
-            <br/>
-            <p>Residente actual: ${hab?.mote}</p>
-            <p>Superficie: ${hab?.superficie}m²</p>
-            <p>Descripción: ${hab?.descripcion}</p>
-          `;
-        } else {
-          infoDiv.innerHTML = '<p>Usuario no encontrado.</p>';
-        }
-      });
-    });
-
-    closeInfo.addEventListener('click', () => {
-      infoContainer.style.display = 'none';
-    });
+    window.habitaciones = <?= json_encode($habitaciones) ?>;
   </script>
+  <script src="index.js"></script>
   <script src="mobileWarning.js"></script>
 </body>
 </html>
