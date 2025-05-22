@@ -138,7 +138,7 @@
         tr.innerHTML = `
           <td>${habitacion.id}</td>
           <td>${mapPiso(habitacion.piso)}</td>
-          <td>${habitacion.superficie}m²</td>
+          <td>${habitacion.superficie ? habitacion.superficie : '??'}m²</td>
           <td>${habitacion.mote}</td>
         `;
         tbody.appendChild(tr);
