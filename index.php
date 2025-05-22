@@ -85,7 +85,7 @@
           <option value="0">Orden Ascendente</option>
           <option value="1">Orden Descendente</option>
           <option value="2">Mayor Superficie</option>
-          <option calue="3">Menor Superficie</option>
+          <option value="3">Menor Superficie</option>
         </select>
       </div>
       <table>
@@ -108,9 +108,42 @@
   </main>
   <script>
     window.habitaciones = <?= json_encode($habitaciones) ?>;
+  </script>
+  <script src="habitacionDetails.js"></script>
+  <script>
     const habitacionesToSort = window.habitaciones;
+    //const infoDiv = document.querySelector('.info');
     const ordenarSelect = document.getElementById('ordenar');
     const tbody = document.querySelector('tbody');
+
+    function mapPiso(piso) {
+      switch (piso) {
+        case 0:
+          return 'Post';
+        case 1:
+          return 'Primero';
+        case 2:
+          return 'Segundo';
+        default:
+          return 'Desconocido';
+      }
+    }
+
+    function renderHabitaciones(habitacionesToRender) {
+      tbody.innerHTML = '';
+      habitacionesToRender.forEach(habitacion => {
+        const tr = document.createElement('tr');
+        tr.id = `hab-${habitacion.id}`;
+        tr.className = 'hab-selector';
+        tr.innerHTML = `
+          <td>${habitacion.id}</td>
+          <td>${mapPiso(habitacion.piso)}</td>
+          <td>${habitacion.superficie}m²</td>
+          <td>${habitacion.mote}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
 
     ordenarSelect.addEventListener('change', (e) => {
       const orden = parseInt(e.target.value);
@@ -131,22 +164,13 @@
         default:
           sortedHabitaciones = habitacionesToSort;
       }
-      tbody.innerHTML = '';
-      sortedHabitaciones.forEach(habitacion => {
-        const tr = document.createElement('tr');
-        tr.id = `hab-${habitacion.id}`;
-        tr.className = 'hab-selector';
-        tr.innerHTML = `
-          <td>${habitacion.id}</td>
-          <td>${habitacion.piso}º</td>
-          <td>${habitacion.superficie}m²</td>
-          <td>${habitacion.mote}</td>
-        `;
-        tbody.appendChild(tr);
-      });
+      renderHabitaciones(sortedHabitaciones);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHabitaciones(habitacionesToSort.sort((a, b) => a.id - b.id));
     });
   </script>
-  <script src="habitacionDetails.js"></script>
   <script src="index.js"></script>
 </body>
 </html>
