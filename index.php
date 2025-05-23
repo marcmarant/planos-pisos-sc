@@ -99,7 +99,7 @@
               <td><?= $habitacion['id'] ?></td>
               <td><?= $habitacion['piso'] ?>º</td>
               <td><?= $habitacion['superficie'] ?>m²</td>
-              <td><?= $habitacion['mote'] ?></td>
+              <td><?= $habitacion['mote'] ?? 'Vacia'?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -139,7 +139,7 @@
           <td>${habitacion.id}</td>
           <td>${mapPiso(habitacion.piso)}</td>
           <td>${habitacion.superficie ? habitacion.superficie : '??'}m²</td>
-          <td>${habitacion.mote}</td>
+          <td>${habitacion.mote ? habitacion.mote : 'Vacia'}</td>
         `;
         tbody.appendChild(tr);
       });
