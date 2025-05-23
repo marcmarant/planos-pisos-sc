@@ -9,8 +9,7 @@
         )
       )
       SELECT C.mote, H.*
-      FROM colegiales_actuales C INNER JOIN habitacion H ON C.habitacion = H.id
-      WHERE C.habitacion IS NOT NULL
+      FROM habitacion H LEFT JOIN colegiales_actuales C ON H.id = C.habitacion
     ";
     if ($piso !== null) {
       $sql .= " AND H.piso = :piso";
